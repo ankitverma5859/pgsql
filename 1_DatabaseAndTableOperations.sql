@@ -89,24 +89,3 @@
 
             DROP TABLE roles;
             
- /*
-  __How to insert data in a Table?
-  Syntax:   INSERT INTO <TableName> (<ColumnName>, ColumnName>,...)
-            VALUES (value1, value2, ...)
-  Example:  
- */
-            CREATE TABLE customers (
-              customer_id SERIAL PRIMARY KEY,
-              first_name VARCHAR(50),
-              last_name VARCHAR(50),
-              email VARCHAR(150),
-              age INT
-            );
-            
-            INSERT INTO customers (first_name, last_name, email, age)
-            VALUES ('ankit', 'verma', 'ankit.verma5859@gmail.com', 25)
-            
-            SELECT * FROM customers;
-            
-            
-
