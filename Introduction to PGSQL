@@ -1,0 +1,13 @@
+//
+  __How to create a Database?
+  Syntax:   CREATE DATABASE <Database_Name>
+  Example:  CREATE DATABASE db_test
+//
+
+//
+  __How to deleta a Database?
+  Syntax:   DROP DATABASE <Database_Name>
+  Example:  DROP DATABASE db_test
+  Remarks:  1) Only superusers and database owners can execute the DROP DATABASE statement.
+        
+//
