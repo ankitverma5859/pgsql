@@ -174,6 +174,16 @@
            ORDER BY
              num DESC NULLS LAST;
              
+          /* Filtering out distinct values with select  */
+          SELECT DISTINCT movie_lang
+          FROM movies
+          ORDER BY movie_lang;
+          
+          /* Filtering out distinst rows with select */
+          SELECT 
+            DISTINCT *
+          FROM movies
+          ORDER BY movie_lang;
           
           
         
