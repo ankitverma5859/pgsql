@@ -124,9 +124,3 @@
               UPDATE SET
                 tag = EXCLUDED.tag || '1',    /* EXCLUDED.tag means the VALUES('pen') i.e pen and || 1 is pen1, || is append */
                 update_date = NOW();
-            
-            
-            
-            
-            
-         
