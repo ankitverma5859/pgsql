@@ -45,5 +45,72 @@
           movie_lang "Language"
         FROM movies;
 
+/*
+  __How to combine two columns as one for display?
+  Syntax:   SELECT 
+              <ColumnName> || <ColumnName> 
+            FROM <TableName>
+  Example:  
+*/         
+        SELECT 
+          first_name || last_name
+        FROM actors;
+        
+        /* For better readability we can also add an space between the two columns values */
+        SELECT 
+          first_name || ' ' || last_name
+        FROM actors;
+        
+        /* Add an Alias to make it even better */
+        SELECT 
+          first_name || ' ' || last_name AS "Full Name"
+        FROM actors;
+        
+        /* 
+            Can we evaluate expressions?
+            Yes!
+        */
+        
+        SELECT 2 * 20;
+        /* 40 */
+        
+        SELECT 20 / 2;
+        /* 10 */
+        
+/*
+  __How to display sorted results?
+  Syntax:   SELECT * 
+            FROM <TableName>
+            ORDER BY
+              sort_expression [ASC | DESC]
+              ...
+  Example:  
+*/       
+          SELECT 
+            *
+          FROM movies
+          ORDER BY
+            release_date ASC;
+            
+          /* By default db will sort in ascending order. */  
+          SELECT 
+            *
+          FROM movies
+          ORDER BY
+            release_date;
+            
+          SELECT 
+            *
+          FROM movies
+          ORDER BY
+            release_date DESC;
+            
+          /* Sorting using multiple columns. */
+          SELECT 
+            *
+          FROM movies
+          ORDER BY
+            movie_name ASC,
+            release_date DESC;
         
         
