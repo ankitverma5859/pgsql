@@ -119,5 +119,62 @@
             last_name AS surname
           FROM actors
           ORDER BY surname;  /* surname alias is used for the sort expression. */
+          
+          /* An example to sort based upon the length of the column value. */
+          SELECT 
+            first_name,
+            LENGTH(first_name) as len
+          FROM actors
+          ORDER BY
+            len DESC;
+            
+          /* How to use column numbers instead of column name in ORDER BY */
+          SELECT 
+            first_name,             /* 1 */
+            last_name,              /* 2 */
+            date_of_birth           /* 3 */
+          FROM actors
+          ORDER BY
+            1 ASC,
+            3 DESC;
+            
+          /* Sorting NULL values */
+          CREATE TABLE demo_sorting (
+            num INT
+          );
+
+          INSERT INTO demo_sorting (num)
+          VALUES
+            (1),
+            (2),
+            (3),
+            (NULL);
+            
+           /* By default for ASC, NULL values will be at the end. */ 
+           SELECT *
+           FROM demo_sorting
+           ORDER BY
+             num ASC;
+             
+           /* To keep the NULLs at the top with ASC. */  
+           SELECT *
+           FROM demo_sorting
+           ORDER BY
+             num ASC NULLS LAST;
+             
+           /*By default for DESC, NULL values will be at the top.*/  
+           SELECT *
+           FROM demo_sorting
+           ORDER BY
+             num DESC;
+             
+           /* To keep the NULL values at the end with DESC. */  
+           SELECT *
+           FROM demo_sorting
+           ORDER BY
+             num DESC NULLS LAST;
+             
+          
+          
         
         
