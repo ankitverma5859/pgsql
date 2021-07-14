@@ -38,8 +38,52 @@
             INSERT INTO customers (first_name)
             VALUES ('Jackky') RETURNING customer_id; /* You can also specify the column name to be returned when the operation is successfull. */
             
+/*
+  __How to update data in a Table?
+  Syntax:   UPDATE <TableName>
+            SET 
+            <ColumnName> = value,
+            <ColumnName> = value,
+            ...
+            WHERE <ColumnName> = value;
+  Example:  
+ */
+            /* Updating single column */
+            UPDATE customers
+            SET email = 'ankit.verma@gmail.com'
+            WHERE customer_id = 1;
             
+            /* Updating multiple columns */
+            UPDATE customers
+            SET
+            email = 'ankit.verma5859@gmail.com',
+            age = 26
+            WHERE customer_id = 1;
             
+            UPDATE customers
+            SET email = 'ankit.verma@gmail.com'
+            WHERE customer_id = 1
+            RETURNING *;
+            /* RETURNING is useful when you have very large dataset and you don't want to make a select command and get the result. */
             
+            /* 
+              How to update all the rows for a column 
+              First create a column E.g is_enable
+            */
+            UPDATE customers
+            SET 
+            is_enable = 'Y';
             
+/*
+  __How to delete data(a row) in a Table?
+  Syntax:   DELETE FROM <TableName>
+            WHERE <ColumnName> = value;
+  Example:  
+ */
+            DELETE FROM customers
+            WHERE customer_id = 2;
             
+            /* To delete all data from the table */
+            DELETE FROM customers;
+            
+         
