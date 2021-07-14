@@ -81,3 +81,10 @@
             update_date, column added to indicate when the row data was updated
 */
 
+/*
+  __How to delete a Table?
+  Syntax:   DROP TABLE <TableName>;
+  Example: 
+*/
+            DROP TABLE roles;
+
