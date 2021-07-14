@@ -112,5 +112,12 @@
           ORDER BY
             movie_name ASC,
             release_date DESC;
+            
+          /* Aliases can also be used as sort expressions. */
+          SELECT 
+            first_name,
+            last_name AS surname
+          FROM actors
+          ORDER BY surname;  /* surname alias is used for the sort expression. */
         
         
