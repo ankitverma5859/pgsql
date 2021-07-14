@@ -86,4 +86,47 @@
             /* To delete all data from the table */
             DELETE FROM customers;
             
+/*
+  __How to upsert data(a row) in a Table?
+  UPSERT is basically UPDATE the row if it already exists 
+                      or INSERT a new row.
+  Syntax:   INSERT INTO <TableName> (<ColumnName>, ColumnName>,...)
+            VALUES (value1, value2, ...)
+            ON CONFLICT target action;
+            
+            action:
+                    DO NOTHING
+                    DO UPDATE SET column_name = value
+                    WHERE condition
+  Example:  
+ */   
+            CREATE TABLE t_tags (
+              id SERIAL PRIMARY KEY,
+              tag TEXT UNIQUE,
+              update_date TIMESTAMP DEFAULT NOW()
+            );
+            
+            INSERT INTO t_tags (tag)
+            VALUES 
+            ('pen'),
+            ('pencil');
+            
+            INSERT INTO t_tags (tag)
+            VALUES ('pen')
+            ON CONFLICT (tag)                 /* target is tag i.e if pen already exists in tag then do nothing*/
+            DO 
+              NOTHING;
+              
+            INSERT INTO t_tags (tag)
+            VALUES ('pen')
+            ON CONFLICT (tag)                 /* If value pen is already there in tag column, then DO UPDATE */
+            DO 
+              UPDATE SET
+                tag = EXCLUDED.tag || '1',    /* EXCLUDED.tag means the VALUES('pen') i.e pen and || 1 is pen1, || is append */
+                update_date = NOW();
+            
+            
+            
+            
+            
          
