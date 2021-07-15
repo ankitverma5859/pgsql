@@ -466,4 +466,39 @@ ARITHMETIC
 		FROM movies_revenues
 		WHERE
 			revenues_domestic IS NOT NULL;
+			
+/*
+  __How to concat two columns as one?
+  Syntax:   SELECT <ColumnName> || <ColumnName> || ... 
+  	    AS <NewNameOfColumn>
+	    
+	    SELECT CONCAT(<ColumnName>, <ColumnName>, ...) 
+  	    AS <NewNameOfColumn>
+	    
+	    SELECT CONCAT_WS('<ColumnSeparator>', <ColumnName>, <ColumnName>, ...) 
+  	    AS <NewNameOfColumn>
+  	    
+  Example:  
+*/
+		SELECT 'ankit' || 'verma' AS name;
+		SELECT CONCAT('ankit', 'verma', 'nepal') AS nameandaddress;
+		SELECT CONCAT_WS('|', 'ankit', 'verma' ) AS name;
+		
+		SELECT 
+			first_name || last_name AS "Actor Name"
+		FROM actors;
+
+		SELECT 
+			CONCAT(first_name, last_name) AS "Actor Name"
+		FROM actors;
+
+		SELECT 
+			CONCAT_WS(',', first_name, last_name, date_of_birth) AS "Actor Name",
+		FROM actors;		
+		
+		/* 
+			If concat happens between two columns where value of one column is NULL then the NULL value will be ignored. 
+			If you are using CONCAT_WS and one of the value is null then it will ignore the value as well as the seprator will not be in teh final string.
+		*/
+
 		
