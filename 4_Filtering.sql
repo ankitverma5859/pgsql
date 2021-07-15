@@ -420,4 +420,50 @@ ARITHMETIC
 			Use ILIKE instead of LIKE.
 		*/
 		
+/*
+  __How to use IS NULL and IS NOT NULL operators?
+  Syntax:   SELECT <ColumnName>, <ColumnName>, ...
+	    FROM <TableName>
+	    WHERE
+	    	<ColumnName> IS NULL/IS NOT NULL
+	    
+  Remarks: NULL means missing information or not applicable.
+           Returns true or false.
+  	   IS NULL in WHERE clause would return only values that were null.
+	   IS NOT NULL would return only values that were not null.
+  Example:  
+*/
+/* Find list of actors with missing birth date*/
+		SELECT * 
+		FROM actors
+		WHERE
+			date_of_birth IS NULL
+		ORDER BY date_of_birth;
+
+		/* Find list of actors with missing birth date or missing first name */
+		SELECT * 
+		FROM actors
+		WHERE
+			date_of_birth IS NULL OR 
+			first_name IS NULL
+		ORDER BY date_of_birth;
+
+		/* Get list of movies where domestic revenues is NULL */
+		SELECT *
+		FROM movies_revenues
+		WHERE 
+			revenues_domestic IS NULL;
+
+		/* Get list of movies where domestic or internation movies are null */
+		SELECT *
+		FROM movies_revenues
+		WHERE
+			revenues_domestic IS NULL OR
+			revenues_international IS NULL;
+
+		/* moves where domestic reveneus are not null. */
+		SELECT *
+		FROM movies_revenues
+		WHERE
+			revenues_domestic IS NOT NULL;
 		
