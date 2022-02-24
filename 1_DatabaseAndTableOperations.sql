@@ -35,7 +35,7 @@
               gender CHAR(1),
               date_of_birth DATE,
               add_date DATE,
-              update_date
+              update_date DATE
             );
             
             CREATE TABLE directors (
