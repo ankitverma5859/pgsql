@@ -113,3 +113,22 @@ SELECT * FROM table_time;
 
 SELECT CURRENT_TIME;
 SELECT CURRENT_TIME(4); /* current time with 4 precision */
+
+SELECT CURRENT_TIME, LOCALTIME;
+SELECT LOCALTIME, LOCALTIME(2);
+
+SELECT time '10:00' - time '8:00' as RESULT;
+
+/*
+interval 'n type'
+n = number
+type = seconds, minutes, hours, day, month, year, ...
+*/
+
+SELECT 
+CURRENT_TIME,
+CURRENT_TIME + interval '2 hours' as RESULT;
+
+SELECT 
+CURRENT_TIME,
+CURRENT_TIME + interval '-2 hours' as RESULT;
