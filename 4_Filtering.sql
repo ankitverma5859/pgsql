@@ -365,7 +365,10 @@ ARITHMETIC
   	    Both operators let you search for matterns in string using two special charactes.
 	    1) % matches any sequesnce of zero or more characters
 	    2) _ matches any single character
-	       __ matches any two character	    
+	       __ matches any two character	
+	       
+	    LIKE is case-sensitive
+	    ILIKE is case-insensitive
   Example:  
 */	
 		SELECT 'hello' LIKE 'hello'; /* Returns true */
