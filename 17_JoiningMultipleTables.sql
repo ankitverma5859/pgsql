@@ -160,8 +160,56 @@ FROM t1
 INNER JOIN t2 
 ON CAST(t1.test AS VARCHAR) = t2.test --CHECKOUT the CASTING
 
+/* 
+	LEFT JOIN
+	Returns every row from the left table and rows from right that match values in the right column
+	
+	Here, the first table or the FROM table matters the most.
+*/
+SELECT 
+	d.first_name,
+	d.last_name,
+	mv.movie_name
+FROM movies mv						--(left table) all data from left data will be in the result
+LEFT JOIN directors d 			 	--(right table) only data that is matching on the ON condition will be available	
+ON mv.director_id = d.director_id;	
+
+--
+SELECT 
+	d.first_name,
+	d.last_name,
+	mv.movie_name,
+	mv.movie_lang
+FROM directors d
+LEFT JOIN movies mv
+ON d.director_id = mv.director_id
+WHERE mv.movie_lang IN ('Chinese', 'English');
 
 
+--Count all movies of each directors
+SELECT d.director_id, d.first_name, COUNT(mv.movie_name)
+FROM directors d
+LEFT JOIN movies mv ON d.director_id = mv.director_id
+GROUP BY d.director_id
+ORDER BY COUNT(mv.movie_name) DESC;
+
+-- Get all the movies with age certificate for "all the directors" with nationality american, chinese, and japanese
+-- What is the first table: directors
+SELECT *
+FROM directors d
+LEFT JOIN movies mv 
+ON mv.director_id = d.director_id
+WHERE d.nationality IN ('American', 'Chinese', 'Japanese');
+
+--Get all the total revenues done by each films for each director
+-- LEFT Table: director
+SELECT d.first_name, d.last_name, SUM(mr.revenues_domestic + mr.revenues_international) as "total_revenue"
+FROM directors d
+LEFT JOIN movies mv USING(director_id)
+LEFT JOIN movies_revenue mr USING(movie_id)
+GROUP BY d.first_name, d.last_name
+HAVING SUM(mr.revenues_domestic + mr.revenues_international) > 0
+ORDER BY total_revenue DESC NULLS LAST;
  
 
 
